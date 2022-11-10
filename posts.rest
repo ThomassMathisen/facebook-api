@@ -1,6 +1,0 @@
-POST http://localhost:8800/api/posts
-Content-Type: application/json
-
-{
-    
-}
