@@ -2,8 +2,8 @@ POST http://localhost:8800/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "Jake",
-  "email": "jake@gmail.com",
+  "username": "Jane",
+  "email": "jane@gmail.com",
   "password": "12345"
 }
 
@@ -14,4 +14,32 @@ Content-Type: application/json
 {
   "email": "jake@gmail.com",
   "password": "12345"
+}
+
+###
+PUT http://localhost:8800/api/users/636d0655c014f95119e26d2c
+Content-Type: application/json
+
+{
+  "password": "12345678",
+  "userId": "636d0655c014f95119e26d2c"
+}
+
+###
+DELETE  http://localhost:8800/api/users/636cf904d25b3320d7f4b7f5
+Content-Type: application/json
+
+{
+  "userId": "636cf904d25b3"
+}
+
+###
+GET http://localhost:8800/api/users/636d0655c014f95119e26d2c
+
+###
+PUT http://localhost:8800/api/users/636d0655c014f95119e26d2c/follow
+Content-Type: application/json
+
+{
+  "userId": "636d09ee2b20acf616f609db"
 }
