@@ -1,5 +1,4 @@
 const router = require("express").Router()
-const { Promise } = require("mongoose")
 const Post = require("../models/Post")
 const User = require("../models/User")
 
@@ -69,17 +68,29 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err)
   }
 })
+
 //Get all for timeline
-router.get("/timeline/all", async (req, res) => {
+router.get("/timeline/:userId", async (req, res) => {
   try {
-    const currentUser = await User.findById(req.body.userId)
+    const currentUser = await User.findById(req.params.userId)
     const userPosts = await Post.find({ userId: currentUser._id })
     const friendsPosts = await Promise.all(
       currentUser.following.map((friendId) => {
         return Post.find({ userId: friendId })
       })
     )
-    res.json(userPosts.concat(...friendsPosts))
+    res.status(200).json(userPosts.concat(...friendsPosts))
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+//Get all posts for user
+router.get("/profile/:username", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username })
+    const posts =  await Post.find({ userId: user._id })
+    res.status(200).json(posts)
   } catch (err) {
     res.status(500).json(err)
   }
