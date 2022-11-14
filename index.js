@@ -8,6 +8,8 @@ const multer = require("multer")
 const userRouter = require("./routes/users")
 const authRouter = require("./routes/auth")
 const postRouter = require("./routes/posts")
+const conversationRouter = require("./routes/conversations")
+const messageRouter = require("./routes/messages")
 const router = express.Router()
 const path = require("path")
 
@@ -47,6 +49,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", userRouter)
 app.use("/api/auth", authRouter)
 app.use("/api/posts", postRouter)
+app.use("/api/conversations", conversationRouter)
+app.use("/api/messages", messageRouter)
 
 app.listen(8800, () => {
   console.log("Backend is running")

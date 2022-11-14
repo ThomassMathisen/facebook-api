@@ -1,0 +1,21 @@
+ POST http://localhost:8800/api/conversations
+Content-Type: application/json
+
+{
+    "senderId": "6370fc6b44c3327bb2f6c893",
+    "receiverId": "637251842d518c425829f371"
+}
+
+###
+POST http://localhost:8800/api/messages/
+Content-Type: application/json
+
+{
+  "conversationId": "63727c0fd9588a05a4c2edd2",
+  "sender": "370fc6b44c3327bb2f6c893",
+  "text": "Hello! So nice to hear from you!"
+}
+
+
+###
+GET http://localhost:8800/api/messages/63727c0fd9588a05a4c2edd2
